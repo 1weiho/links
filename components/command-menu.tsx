@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import {
   CommandDialog,
   CommandEmpty,
@@ -9,23 +8,24 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-import { Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import Link from './link';
 import {
   CATEGORY_CONFIG,
   LinkCategory,
   LinkWithCategory,
   searchLinks,
 } from '@/constants/links';
-import { cn } from '@/lib/utils';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import Link from './link';
 
 interface CommandMenuProps {
-  className?: string
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function CommandMenu({ className }: CommandMenuProps) {
-  const [open, setOpen] = useState(false);
+export function CommandMenu({
+  open: openCommandMenu,
+  setOpen: setOpenCommandMenu,
+}: CommandMenuProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const allMatchingLinks = searchLinks(searchQuery);
@@ -43,7 +43,7 @@ export function CommandMenu({ className }: CommandMenuProps) {
   );
 
   const handleSelectLink = async (link: LinkWithCategory) => {
-    setOpen(false);
+    setOpenCommandMenu(false);
 
     await new Promise((resolve) => setTimeout(resolve, 150));
     setSearchQuery('');
@@ -55,7 +55,7 @@ export function CommandMenu({ className }: CommandMenuProps) {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpenCommandMenu((open) => !open);
       }
     };
     document.addEventListener('keydown', down);
@@ -63,75 +63,39 @@ export function CommandMenu({ className }: CommandMenuProps) {
   }, []);
 
   return (
-    <>
-      {/* Desktop Search Button */}
-      <div className={cn("sticky top-0 hidden md:block", className)}>
-        <div className="relative">
-          <Button
-            className="w-full py-6 rounded-2xl justify-start z-10 bg-white/20 backdrop-blur-sm"
-            variant="outline"
-            onClick={() => setOpen(true)}
+    <CommandDialog open={openCommandMenu} onOpenChange={setOpenCommandMenu}>
+      <CommandInput
+        placeholder="Search links..."
+        value={searchQuery}
+        onValueChange={setSearchQuery}
+      />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+
+        {Object.entries(linksByCategory).map(([category, links]) => (
+          <CommandGroup
+            key={category}
+            heading={
+              <div className="flex items-center gap-2">
+                <span>{CATEGORY_CONFIG[category as LinkCategory].name}</span>
+                <span className="text-xs text-muted-foreground">
+                  {links.length}
+                </span>
+              </div>
+            }
           >
-            <Search />
-            Search
-            <div className="ml-auto flex gap-1">
-              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-                ⌘
-              </span>
-              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-                K
-              </span>
-            </div>
-          </Button>
-
-          {/* Overlay */}
-          <span className="absolute bg-gradient-to-b from-[#FBFBFB] to-transparent h-20 w-full block -z-10 top-0" />
-        </div>
-      </div>
-
-      {/* Mobile Search Button */}
-      <Button
-        variant="outline"
-        className={cn("md:hidden! h-auto rounded-[.75rem]", className)}
-        onClick={() => setOpen(true)}
-      >
-        <Search />
-      </Button>
-
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput
-          placeholder="Search links..."
-          value={searchQuery}
-          onValueChange={setSearchQuery}
-        />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-
-          {Object.entries(linksByCategory).map(([category, links]) => (
-            <CommandGroup
-              key={category}
-              heading={
-                <div className="flex items-center gap-2">
-                  <span>{CATEGORY_CONFIG[category as LinkCategory].name}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {links.length}
-                  </span>
-                </div>
-              }
-            >
-              {links.map((link) => (
-                <CommandItem
-                  key={link.id}
-                  value={`${link.name} ${link.url}`}
-                  onSelect={() => handleSelectLink(link)}
-                >
-                  <Link title={link.name} url={link.url} />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ))}
-        </CommandList>
-      </CommandDialog>
-    </>
+            {links.map((link) => (
+              <CommandItem
+                key={link.id}
+                value={`${link.name} ${link.url}`}
+                onSelect={() => handleSelectLink(link)}
+              >
+                <Link title={link.name} url={link.url} />
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        ))}
+      </CommandList>
+    </CommandDialog>
   );
 }
