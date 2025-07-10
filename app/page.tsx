@@ -1,12 +1,13 @@
 import CategoryButton from '@/components/category-button';
 import { CommandMenu } from '@/components/command-menu';
 import Link from '@/components/link';
+import { BookText, Cloud, Figma, PaintbrushVertical, Wrench } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className="flex mx-32 mt-24">
-      <div className="w-[400px] shrink-0">
+      <div className="w-[360px] shrink-0">
         <div className="flex items-center gap-5">
           <Image
             src="/assets/avatar.jpeg"
@@ -19,11 +20,11 @@ export default function Home() {
         </div>
 
         <div className="mt-12 w-full grid gap-4">
-          <CategoryButton />
-          <CategoryButton />
-          <CategoryButton />
-          <CategoryButton />
-          <CategoryButton />
+          <CategoryButton title="Design" icon={PaintbrushVertical} />
+          <CategoryButton title="Tool" icon={Wrench} iconColorClassname='text-blue-400' />
+          <CategoryButton title="Cloud" icon={Cloud} iconColorClassname='text-yellow-400' />
+          <CategoryButton title="Docs" icon={BookText} iconColorClassname='text-orange-400' />
+          <CategoryButton title="UI" icon={Figma} iconColorClassname='text-sky-400' />
         </div>
       </div>
 
