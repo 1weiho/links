@@ -22,9 +22,6 @@ export const metadata: Metadata = {
       "A curated collection of my favorite resources—insightful articles, handy tools, and inspiring discoveries.",
     url: 'https://links.1wei.dev',
     siteName: "Yiwei's Links Collection",
-    // images: [
-    //   { url: 'https://1wei.dev/api/og?title=1wei.dev', alt: '1wei.dev' },
-    // ],
   },
   twitter: {
     card: 'summary_large_image',
