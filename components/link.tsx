@@ -39,8 +39,10 @@ const Link = ({ title, url }: LinkProps) => {
         height={128}
         className="size-6 rounded-sm"
       />
-      <h3>{title}</h3>
-      <p className="text-muted-foreground">{parseUrl(url)}</p>
+      <div className="md:flex gap-2 md:gap-4">
+        <h3>{title}</h3>
+        <p className="text-muted-foreground">{parseUrl(url)}</p>
+      </div>
     </div>
   );
 };

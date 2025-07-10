@@ -18,8 +18,13 @@ import {
   LinkWithCategory,
   searchLinks,
 } from '@/constants/links';
+import { cn } from '@/lib/utils';
 
-export function CommandMenu() {
+interface CommandMenuProps {
+  className?: string
+}
+
+export function CommandMenu({ className }: CommandMenuProps) {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -59,7 +64,8 @@ export function CommandMenu() {
 
   return (
     <>
-      <div className="sticky top-0">
+      {/* Desktop Search Button */}
+      <div className={cn("sticky top-0 hidden md:block", className)}>
         <div className="relative">
           <Button
             className="w-full py-6 rounded-2xl justify-start z-10 bg-white/20 backdrop-blur-sm"
@@ -82,6 +88,16 @@ export function CommandMenu() {
           <span className="absolute bg-gradient-to-b from-[#FBFBFB] to-transparent h-20 w-full block -z-10 top-0" />
         </div>
       </div>
+
+      {/* Mobile Search Button */}
+      <Button
+        variant="outline"
+        className={cn("md:hidden! h-auto rounded-[.75rem]", className)}
+        onClick={() => setOpen(true)}
+      >
+        <Search />
+      </Button>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
           placeholder="Search links..."

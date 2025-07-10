@@ -12,6 +12,7 @@ import {
 import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import CategoryCombobox from './category-combobox';
 
 const LinkManager = () => {
   const [selectedCategory, setSelectedCategory] = useState<LinkCategory>(
@@ -22,20 +23,20 @@ const LinkManager = () => {
   const links = getLinksByCategory(selectedCategory);
 
   return (
-    <div className="flex mx-12 xl:mx-32 mt-24">
+    <div className="md:flex mx-8 md:mx-12 xl:mx-32 mt-16 xl:mt-24">
       <div className="w-60 xl:w-[360px] shrink-0">
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 md:gap-5">
           <Image
             src="/assets/avatar.jpeg"
             alt="Avatar"
             width={260}
             height={260}
-            className="rounded-lg size-12 border-2"
+            className="rounded-lg size-10 md:size-12 border-2"
           />
-          <h1 className="text-2xl">Links</h1>
+          <h1 className="text-xl md:text-2xl">Links</h1>
         </div>
 
-        <div className="mt-12 w-full grid gap-4">
+        <div className="mt-12 w-full hidden md:grid gap-4">
           {categories.map((category) => (
             <CategoryButton
               title={category.name}
@@ -50,11 +51,21 @@ const LinkManager = () => {
         </div>
       </div>
 
-      <div className="w-full max-h-[calc(100vh-6rem)] overflow-y-auto">
-        <div className="w-4/5 mx-auto">
-          <CommandMenu />
+      <div className="w-full md:max-h-[calc(100vh-4rem)] xl:max-h-[calc(100vh-6rem)] overflow-y-auto">
+        <div className="md:w-4/5 mx-auto">
+          {/* Desktop Search Button */}
+          <CommandMenu className="hidden md:block" />
 
-          <div className="my-8 grid gap-3 -mx-4">
+          {/* Mobile Categories Switcher & Search Button */}
+          <div className="md:hidden mt-8 w-full flex gap-2">
+            <CategoryCombobox
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+            <CommandMenu />
+          </div>
+
+          <div className="my-8 grid gap-6 md:gap-3 -ms-4 md:-mx-4">
             {links.length > 0 ? (
               links.map((link) => (
                 <Button variant="ghost" key={link.id} asChild>
