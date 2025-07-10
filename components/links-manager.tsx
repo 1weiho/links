@@ -26,13 +26,15 @@ const LinkManager = () => {
     <div className="md:flex mx-8 md:mx-12 xl:mx-32 mt-16 xl:mt-24">
       <div className="w-60 xl:w-[360px] shrink-0">
         <div className="flex items-center gap-3 md:gap-5">
-          <Image
-            src="/assets/avatar.jpeg"
-            alt="Avatar"
-            width={260}
-            height={260}
-            className="rounded-lg size-10 md:size-12 border-2"
-          />
+          <NextLink href="https://1wei.dev" target="_blank">
+            <Image
+              src="/assets/avatar.jpeg"
+              alt="Avatar"
+              width={260}
+              height={260}
+              className="rounded-lg size-10 md:size-12 border-2"
+            />
+          </NextLink>
           <h1 className="text-xl md:text-2xl">Links</h1>
         </div>
 
