@@ -1,29 +1,44 @@
-import { PaintbrushVertical } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import type { LucideIcon } from 'lucide-react';
 
 interface CategoryButtonProps {
-  title: string
-  icon: LucideIcon
-  iconColorClassname?: string
+  title: string;
+  icon: LucideIcon;
+  count: number;
+  selected: boolean;
+  onClick: () => void;
+  iconColorClassname?: string;
 }
 
-const CategoryButton = ({ title, icon: Icon, iconColorClassname }: CategoryButtonProps) => {
+const CategoryButton = ({
+  title,
+  icon: Icon,
+  count,
+  selected,
+  onClick,
+  iconColorClassname,
+}: CategoryButtonProps) => {
   return (
     <Button
-      variant="ghost"
+      variant={selected ? 'secondary' : 'ghost'}
       className="flex items-center w-full justify-between p-1.5 rounded-lg -ml-1.5 h-fit font-normal"
+      onClick={onClick}
     >
       <div className="flex items-center gap-4">
-        <div className={cn("size-9 rounded-lg border-2 text-muted-foreground flex justify-center items-center bg-white", iconColorClassname)}>
+        <div
+          className={cn(
+            'size-9 rounded-lg border-2 text-muted-foreground flex justify-center items-center bg-white',
+            iconColorClassname
+          )}
+        >
           <Icon className="size-5" />
         </div>
         <span className="text-lg">{title}</span>
       </div>
 
       <span className="bg-neutral-200/50 size-6 flex justify-center items-center rounded-md mr-2">
-        1
+        {count}
       </span>
     </Button>
   );
