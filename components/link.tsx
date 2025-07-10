@@ -1,15 +1,12 @@
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 interface LinkProps {
-    title: string
-    url: string
+  title: string;
+  url: string;
 }
 
 const parseUrl = (url: string, removeSubdomain = false) => {
-  const cleaned = url
-    .replace(/^https?:\/\//i, '')
-    .replace(/\/+$/g, '');
+  const cleaned = url.replace(/^https?:\/\//i, '').replace(/\/+$/g, '');
 
   const [rawHost, ...pathParts] = cleaned.split('/');
   let host = rawHost;
@@ -27,13 +24,16 @@ const parseUrl = (url: string, removeSubdomain = false) => {
   const path = pathParts.join('/');
 
   return path ? `${host}/${path}` : host;
-}
+};
 
 const Link = ({ title, url }: LinkProps) => {
   return (
     <div className="flex gap-4 w-full justify-start items-center">
       <Image
-        src={`https://www.google.com/s2/favicons?domain=${parseUrl(url, true)}&sz=128`}
+        src={`https://www.google.com/s2/favicons?domain=${parseUrl(
+          url,
+          true
+        )}&sz=128`}
         alt={`${title}'s favicon`}
         width={128}
         height={128}
