@@ -22,8 +22,8 @@ const LinkManager = () => {
   const links = getLinksByCategory(selectedCategory);
 
   return (
-    <div className="flex mx-32 mt-24">
-      <div className="w-[360px] shrink-0">
+    <div className="flex mx-12 xl:mx-32 mt-24">
+      <div className="w-60 xl:w-[360px] shrink-0">
         <div className="flex items-center gap-5">
           <Image
             src="/assets/avatar.jpeg"
