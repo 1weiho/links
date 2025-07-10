@@ -10,6 +10,7 @@ import {
 } from '@/constants/links';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 const LinkManager = () => {
   const [selectedCategory, setSelectedCategory] = useState<LinkCategory>(
@@ -53,10 +54,14 @@ const LinkManager = () => {
           <CommandMenu />
 
           <div className="mt-8 grid gap-3 -mx-4">
-            {links.length > 0 ? links.map((link) => (
-              <Link key={link.id} title={link.name} url={link.url} />
-            )) : (
-                <p className='mx-4'>Empty.</p>
+            {links.length > 0 ? (
+              links.map((link) => (
+                <Button variant="ghost" key={link.id}>
+                  <Link title={link.name} url={link.url} />
+                </Button>
+              ))
+            ) : (
+              <p className="mx-4">Empty.</p>
             )}
           </div>
         </div>

@@ -31,7 +31,7 @@ const parseUrl = (url: string, removeSubdomain = false) => {
 
 const Link = ({ title, url }: LinkProps) => {
   return (
-    <Button variant="ghost" className="gap-4 w-full justify-start">
+    <div className="flex gap-4 w-full justify-start items-center">
       <Image
         src={`https://www.google.com/s2/favicons?domain=${parseUrl(url, true)}&sz=128`}
         alt={`${title}'s favicon`}
@@ -41,7 +41,7 @@ const Link = ({ title, url }: LinkProps) => {
       />
       <h3>{title}</h3>
       <p className="text-muted-foreground">{parseUrl(url)}</p>
-    </Button>
+    </div>
   );
 };
 

@@ -7,14 +7,44 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
 } from '@/components/ui/command';
 import { Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from './link';
+import {
+  CATEGORY_CONFIG,
+  LinkCategory,
+  LinkWithCategory,
+  searchLinks,
+} from '@/constants/links';
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const allMatchingLinks = searchLinks(searchQuery);
+  const linksByCategory = Object.values(LinkCategory).reduce(
+    (acc, category) => {
+      const categoryLinks = allMatchingLinks.filter(
+        (link) => link.category === category
+      );
+      if (categoryLinks.length > 0) {
+        acc[category] = categoryLinks;
+      }
+      return acc;
+    },
+    {} as Record<LinkCategory, LinkWithCategory[]>
+  );
+
+  const handleSelectLink = async (link: LinkWithCategory) => {
+    setOpen(false);
+
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    setSearchQuery('');
+
+    window.open(link.url, '_blank', 'noopener,noreferrer');
+  };
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -46,20 +76,37 @@ export function CommandMenu() {
         </div>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search links..." />
+        <CommandInput
+          placeholder="Search links..."
+          value={searchQuery}
+          onValueChange={setSearchQuery}
+        />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Design">
-            <CommandItem>
-              <Link title="Vercel" url="vercel.com" />
-            </CommandItem>
-            <CommandItem>
-              <Link title="Raycast" url="raycast.com" />
-            </CommandItem>
-            <CommandItem>
-              <Link title="Shadcn" url="ui.shadcn.com" />
-            </CommandItem>
-          </CommandGroup>
+
+          {Object.entries(linksByCategory).map(([category, links]) => (
+            <CommandGroup
+              key={category}
+              heading={
+                <div className="flex items-center gap-2">
+                  <span>{CATEGORY_CONFIG[category as LinkCategory].name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {links.length}
+                  </span>
+                </div>
+              }
+            >
+              {links.map((link) => (
+                <CommandItem
+                  key={link.id}
+                  value={`${link.name} ${link.url}`}
+                  onSelect={() => handleSelectLink(link)}
+                >
+                  <Link title={link.name} url={link.url} />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          ))}
         </CommandList>
       </CommandDialog>
     </>
