@@ -3,6 +3,7 @@
 import CategoryButton from '@/components/category-button';
 import { CommandMenu } from '@/components/command-menu';
 import Link from '@/components/link';
+import NextLink from 'next/link';
 import {
   getCategoriesWithCount,
   getLinksByCategory,
@@ -56,8 +57,10 @@ const LinkManager = () => {
           <div className="mt-8 grid gap-3 -mx-4">
             {links.length > 0 ? (
               links.map((link) => (
-                <Button variant="ghost" key={link.id}>
-                  <Link title={link.name} url={link.url} />
+                <Button variant="ghost" key={link.id} asChild>
+                  <NextLink href={link.url} target="_blank">
+                    <Link title={link.name} url={link.url} />
+                  </NextLink>
                 </Button>
               ))
             ) : (
