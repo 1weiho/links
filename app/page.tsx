@@ -1,7 +1,6 @@
 import CategoryButton from '@/components/category-button';
+import { CommandMenu } from '@/components/command-menu';
 import Link from '@/components/link';
-import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -30,21 +29,7 @@ export default function Home() {
 
       <div className="w-full">
         <div className="w-4/5 mx-auto">
-          <Button
-            className="w-full py-6 rounded-2xl justify-start"
-            variant="outline"
-          >
-            <Search />
-            Search
-            <div className="ml-auto flex gap-1">
-              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-                ⌘
-              </span>
-              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-                K
-              </span>
-            </div>
-          </Button>
+          <CommandMenu />
 
           <div className="mt-8 grid gap-3 -mx-4">
             <Link title='Vercel' url='vercel.com' />
