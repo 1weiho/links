@@ -34,7 +34,9 @@ const CategoryCombobox = ({
 
   const categories = getCategoriesWithCount();
 
-  const currentCategory = categories.find((category) => category.id === selectedCategory)
+  const currentCategory = categories.find(
+    (category) => category.id === selectedCategory
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -58,7 +60,10 @@ const CategoryCombobox = ({
           <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0 bg-white/10 backdrop-blur-md">
+      <PopoverContent
+        className="p-0 bg-white/10 backdrop-blur-md mt-1 rounded-[.75rem]"
+        style={{ width: 'var(--radix-popover-trigger-width)' }}
+      >
         <Command className="bg-transparent">
           <CommandInput placeholder="Search category..." />
           <CommandList>
@@ -69,7 +74,7 @@ const CategoryCombobox = ({
                   key={category.id}
                   value={category.id}
                   onSelect={() => {
-                    setSelectedCategory(category.id)
+                    setSelectedCategory(category.id);
                     setOpen(false);
                   }}
                   asChild
