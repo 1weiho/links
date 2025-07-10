@@ -50,11 +50,11 @@ const LinkManager = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full max-h-[calc(100vh-6rem)] overflow-y-auto">
         <div className="w-4/5 mx-auto">
           <CommandMenu />
 
-          <div className="mt-8 grid gap-3 -mx-4">
+          <div className="my-8 grid gap-3 -mx-4">
             {links.length > 0 ? (
               links.map((link) => (
                 <Button variant="ghost" key={link.id} asChild>

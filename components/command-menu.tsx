@@ -59,22 +59,29 @@ export function CommandMenu() {
 
   return (
     <>
-      <Button
-        className="w-full py-6 rounded-2xl justify-start"
-        variant="outline"
-        onClick={() => setOpen(true)}
-      >
-        <Search />
-        Search
-        <div className="ml-auto flex gap-1">
-          <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-            ⌘
-          </span>
-          <span className="size-6 bg-accent flex items-center justify-center rounded-md">
-            K
-          </span>
+      <div className="sticky top-0">
+        <div className="relative">
+          <Button
+            className="w-full py-6 rounded-2xl justify-start z-10 bg-white/20 backdrop-blur-sm"
+            variant="outline"
+            onClick={() => setOpen(true)}
+          >
+            <Search />
+            Search
+            <div className="ml-auto flex gap-1">
+              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
+                ⌘
+              </span>
+              <span className="size-6 bg-accent flex items-center justify-center rounded-md">
+                K
+              </span>
+            </div>
+          </Button>
+
+          {/* Overlay */}
+          <span className="absolute bg-gradient-to-b from-[#FBFBFB] to-transparent h-20 w-full block -z-10 top-0" />
         </div>
-      </Button>
+      </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
           placeholder="Search links..."

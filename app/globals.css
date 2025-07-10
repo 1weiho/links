@@ -120,3 +120,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom Global CSS */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e2e2;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
+
+::selection {
+  background-color: #43e4cc4a;
+  color: #1a544b;
+}
+
+::-moz-selection {
+  background-color: #43e4cc4a;
+  color: #1a544b;
+}
