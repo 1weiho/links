@@ -54,6 +54,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     category: LinkCategory.DESIGN,
   },
   {
+    id: 'devouring-details',
+    name: 'Devouring Details',
+    url: 'https://devouringdetails.com',
+    category: LinkCategory.DESIGN,
+  },
+  {
     id: 'mobbin',
     name: 'Mobbin',
     url: 'https://mobbin.com',
