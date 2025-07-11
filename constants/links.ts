@@ -1,10 +1,11 @@
-import { Cloud, Frame, LucideIcon, Palette, Wrench } from 'lucide-react';
+import { BookUser, Cloud, Frame, LucideIcon, Palette, Wrench } from 'lucide-react';
 
 export enum LinkCategory {
   DESIGN = 'design',
   TOOL = 'tool',
   CLOUD = 'cloud',
   UI = 'ui',
+  PORTFOLIO = 'portfolio'
 }
 
 export interface Link {
@@ -42,6 +43,11 @@ export const CATEGORY_CONFIG: Record<LinkCategory, Omit<CategoryInfo, 'id'>> = {
     name: 'UI',
     icon: Frame,
     iconColorClassname: 'text-violet-300',
+  },
+  [LinkCategory.PORTFOLIO]: {
+    name: 'Portfolio',
+    icon: BookUser,
+    iconColorClassname: 'text-emerald-300',
   },
 };
 
@@ -364,6 +370,92 @@ export const ALL_LINKS: LinkWithCategory[] = [
     name: 'Fancy Components',
     url: 'https://www.fancycomponents.dev',
     category: LinkCategory.UI,
+  },
+  
+  // Portfolio
+  {
+    id: 'rauno-freiberg',
+    name: 'Rauno Freiberg',
+    url: 'https://rauno.me',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'pedro-duarte',
+    name: 'Pedro Duarte',
+    url: 'https://ped.ro',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'anthony-fu',
+    name: 'Anthony Fu',
+    url: 'https://antfu.me',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'onur',
+    name: 'Onur',
+    url: 'https://onur.dev',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'cali-castle',
+    name: 'Cali Castle',
+    url: 'https://cali.so',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'ryo-lu',
+    name: 'Ryo Lu',
+    url: 'https://ryo.lu',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'emil-kowalski',
+    name: 'Emil Kowalski',
+    url: 'https://emilkowal.ski',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'lee-robinson',
+    name: 'Lee Robinson',
+    url: 'https://leerob.com',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'yiwei-ho',
+    name: 'Yiwei Ho',
+    url: 'https://1wei.dev',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'jhey-tompkins',
+    name: 'Jhey Tompkins',
+    url: 'https://www.jhey.dev',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'evil-rabbit',
+    name: 'Evil Rabbit',
+    url: 'https://www.evilrabbit.com',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'shu-ding',
+    name: 'Shu Ding',
+    url: 'https://shud.in',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'guillermo-rauch',
+    name: 'Guillermo Rauch',
+    url: 'https://rauchg.com',
+    category: LinkCategory.PORTFOLIO,
+  },
+  {
+    id: 'brian-ruiz',
+    name: 'Brian Ruiz',
+    url: 'https://www.b-r.io',
+    category: LinkCategory.PORTFOLIO,
   },
 ];
 
