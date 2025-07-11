@@ -353,6 +353,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://originui.com',
     category: LinkCategory.UI,
   },
+  {
+    id: 'fancy-components',
+    name: 'Fancy Components',
+    url: 'https://www.fancycomponents.dev',
+    category: LinkCategory.UI,
+  },
 ];
 
 export const getLinksByCategory = (
