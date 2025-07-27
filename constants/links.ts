@@ -137,6 +137,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://www.magicpattern.design',
     category: LinkCategory.DESIGN,
   },
+  {
+    id: 'making-software',
+    name: 'Making Software',
+    url: 'https://www.makingsoftware.com',
+    category: LinkCategory.DESIGN,
+  },
 
   // Tool
   {
