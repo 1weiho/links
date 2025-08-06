@@ -377,6 +377,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://www.fancycomponents.dev',
     category: LinkCategory.UI,
   },
+  {
+    id: 'pattern-craft',
+    name: 'PatternCraft',
+    url: 'https://patterncraft.fun',
+    category: LinkCategory.UI,
+  },
   
   // Portfolio
   {
