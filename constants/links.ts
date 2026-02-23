@@ -3,7 +3,7 @@ import { BookUser, Cloud, Frame, LucideIcon, Palette, Wrench } from 'lucide-reac
 export enum LinkCategory {
   DESIGN = 'design',
   TOOL = 'tool',
-  CLOUD = 'cloud',
+  INFRA = 'infra',
   UI = 'ui',
   PORTFOLIO = 'portfolio'
 }
@@ -34,8 +34,8 @@ export const CATEGORY_CONFIG: Record<LinkCategory, Omit<CategoryInfo, 'id'>> = {
     icon: Wrench,
     iconColorClassname: 'text-sky-300',
   },
-  [LinkCategory.CLOUD]: {
-    name: 'Cloud',
+  [LinkCategory.INFRA]: {
+    name: 'Infra',
     icon: Cloud,
     iconColorClassname: 'text-amber-400',
   },
@@ -266,72 +266,72 @@ export const ALL_LINKS: LinkWithCategory[] = [
     category: LinkCategory.TOOL,
   },
 
-  // Cloud
+  // Infra
   {
     id: 'upstash',
     name: 'Upstash',
     url: 'https://console.upstash.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'trigger-dev',
     name: 'Trigger.dev',
     url: 'https://cloud.trigger.dev',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'cloudways',
     name: 'Cloudways',
     url: 'https://unified.cloudways.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'go-daddy',
     name: 'GoDaddy',
     url: 'https://tw.godaddy.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'azure',
     name: 'Azure',
     url: 'https://portal.azure.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'gcp',
     name: 'GCP',
     url: 'https://console.cloud.google.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'planet-scale',
     name: 'PlanetScale',
     url: 'https://app.planetscale.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'neon',
     name: 'Neon',
     url: 'https://console.neon.tech',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'clerk',
     name: 'Clerk',
     url: 'https://dashboard.clerk.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'resend',
     name: 'Resend',
     url: 'https://resend.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
   {
     id: 'laravel-cloud',
     name: 'Laravel Cloud',
     url: 'https://cloud.laravel.com',
-    category: LinkCategory.CLOUD,
+    category: LinkCategory.INFRA,
   },
 
   // UI
