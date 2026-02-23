@@ -259,6 +259,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://pagespeed.web.dev',
     category: LinkCategory.TOOL,
   },
+  {
+    id: 'oauth-2.0-playground',
+    name: 'OAuth 2.0 Playground',
+    url: 'https://developers.google.com/oauthplayground',
+    category: LinkCategory.TOOL,
+  },
 
   // Cloud
   {
