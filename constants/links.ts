@@ -265,6 +265,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://developers.google.com/oauthplayground',
     category: LinkCategory.TOOL,
   },
+  {
+    id: 'subflow',
+    name: 'Subflow',
+    url: 'https://subflow.ing',
+    category: LinkCategory.TOOL,
+  },
 
   // Infra
   {
