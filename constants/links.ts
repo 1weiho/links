@@ -143,6 +143,12 @@ export const ALL_LINKS: LinkWithCategory[] = [
     url: 'https://www.makingsoftware.com',
     category: LinkCategory.DESIGN,
   },
+  {
+    id: 'before',
+    name: 'before',
+    url: 'https://before.click',
+    category: LinkCategory.DESIGN,
+  },
 
   // Tool
   {
